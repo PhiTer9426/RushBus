@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+		</title>
+		<meta content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+			<link href="style.css" rel="stylesheet">
+			</link>
+		</meta>
+	</head>
+	<body>
+		<div class="contain-feedback">
+			<div class="title-feedback">
+				<span class="text-20-black">
+					意见反馈
+				</span>
+			</div>
+			<div class="message-box" id="Contain_msg">
+				<div class="message-left">
+					<p class=".text-18-black">
+						Hello ，HUSTer！欢迎来到小巴反馈平台，您提的宝贵建议，我们都会及时向后勤集团校车队反映的哦！
+					</p>
+				</div>
+			</div>
+			<div class="input-box">
+				<input type="text" class="input-feedback" id="Message_text">
+				<button class="btn-feedback" id="Button_feedback">发送</button>
+			</div>
+		</div>
+
+
+		<script>
+
+			let msgContain = document.getElementById('Contain_msg');
+
+			Button_feedback.onclick = function(){
+
+				let msgBox = document.createElement("div");
+        msgBox.className = "message-right";
+        msgContain.appendChild(msgBox);
+
+        let msg = document.createElement("p");
+        msg.className = ".text-18-black";
+        msg.innerHTML = Message_text.value;
+        msgBox.appendChild(msg);
+
+        ajax({
+          'url':'http://localhost:1000',
+          'type':'get',
+          'data':{
+          	'author' : 'zhao',
+            'msg': Message_text.value
+          },
+          success:function(data){
+            console.log(data);
+          }
+        })
+      };
+
+
+
+			function ajax(json){
+          if(window.XMLHttpRequest){
+            var ajax = new XMLHttpRequest();
+          }
+          else{
+            var ajax = new ActiveXObject( "Microsoft.XMLHTTP" );
+          }
+
+          if(json.type=='get'){
+            ajax.open('get',json.url+'?'+JsonToString(json.data),true);
+            ajax.send();
+          }
+          else if(json.type=='post'){
+            ajax.open('post',json.url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.send(JsonToString(json.data));
+          }          
+
+          ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4){
+              if(ajax.status>=200 && ajax.status<300 || ajax.status == 304){
+                json.success(ajax.responseText);
+
+              }
+              else{
+                json.error && json.error();
+              }
+            };
+          };
+
+          function JsonToString(json){
+            var arr = [];
+            for(var i in json){
+              arr.push(i+'='+json[i]);
+            };
+            return arr.join('&');
+          }
+        }
+		</script>
+	</body>
+</html>
