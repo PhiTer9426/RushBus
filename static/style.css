@@ -43,8 +43,14 @@
 	letter-spacing: 0;
 	color: #3b3b3b;
 }
+html{
+	height: 100vh;
+	width: 100vw;
+	max-width: 400px;
+}
 body {
 	margin: 0;
+	overflow: hidden;
 }
 a {
 	text-decoration: none;
@@ -53,34 +59,46 @@ a {
 	display: none !important;
 }
 
-
-
-/*------------------------------------*\
-  #feedback
-\*------------------------------------*/
-
-.contain-feedback{
-	width: 100%;
-	max-width: 400px;
-	height: 100vh;
-	min-height: 100vh;
-}
-
-.title-feedback{
+.title{
 	position: fixed;
+	z-index: 10;
 	top: 0;
 	left: 0;
-	width: 100vw;
-	height: 60px;
+	width: 100%;
+	height: 40px;
 	background: white;
 	box-shadow: 0 10px 10px 0 rgba(59, 59, 59, .05);
 }
 
-.title-feedback span{
-	position: fixed;
-	top: 20px;
-	left: calc(50vw - 33px);
+.title h1{
+	text-align: center;
+	margin-top: 10px;
 }
+
+.contain{
+	width: 100%;
+	max-width: 400px;
+	height: 100vh;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+/*------------------------------------*\
+  #index
+\*------------------------------------*/
+
+.index-select{
+	width: 90%;
+	height: 45%;
+	border-radius: 20px;
+}
+
+/*------------------------------------*\
+  #feedback
+\*------------------------------------*/
 
 .input-box{
 	position: fixed;
@@ -91,9 +109,9 @@ a {
 }
 
 .message-box{
-	height: calc(100vh - 140px);
+	height: calc(100vh - 110px);
 	width: 100%;
-	margin-top: 70px;
+	margin-top: 40px;
 	margin-bottom: 70px;
 	display: flex;
 	flex-direction: column;
@@ -149,4 +167,61 @@ a {
 	text-decoration: none;
 	font-size: 16px;
 	box-sizing: border-box;
+}
+
+
+
+/*------------------------------------*\
+  #map
+\*------------------------------------*/
+#container{
+	width: 100vw;
+	height: 100vh;
+}
+
+.start-button{	
+	border: none;
+	outline:none;
+	color: white;
+	width: 200px;
+	height: 200px;
+	padding: 30px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 36px;
+	cursor: pointer;
+	border-radius: 100px;
+}
+
+.start-button-green{
+	background-color: #4CAF50;
+}
+
+.start-button-red{
+	background-color: #f62446;
+}
+
+.select-box{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+	width: 100%;
+	height: 100px;
+}
+
+.line-button{
+	width: 100px;
+	height: 60px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	outline: none;
+	background: #fff;
+	color: #aaa;
+}
+
+.active-button{
+	border: 1px solid #4CAF50;
+	color: #4CAF50;
 }
