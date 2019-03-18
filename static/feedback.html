@@ -15,6 +15,11 @@
 					意见反馈
 				</h1>
 			</div>
+      <div class="button-back">
+        <a href="./map.html">
+          <img src="../icon/arrowleft.png" alt="返回">
+        </a>
+      </div>
 			<div class="message-box" id="Contain_msg">
 				<div class="message-left">
 					<p class=".text-18-black">
@@ -45,7 +50,7 @@
         msgBox.appendChild(msg);
 
         ajax({
-          'url':'http://localhost:1000',
+          'url':'http://localhost:5050',
           'type':'get',
           'data':{
           	'ID' : 'zhao',

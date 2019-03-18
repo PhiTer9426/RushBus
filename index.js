@@ -12,6 +12,10 @@ app.get('/', function (req, res) {
     console.log('start success');
 });
 
+app.get('/feedback.html', function(req, res){
+
+})
+
 // 监听 5050 端口
 app.listen(process.env.PORT || 5050);
 
